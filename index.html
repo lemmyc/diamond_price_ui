@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/styles/style.css">
+  <title>💎Diamond Price Prediction💎</title>
+</head>
+<body>
+
+  <div class="modal" id="init-modal">
+    <div class="notification">
+      <h1>Initializing Model...</h1>
+      <p>This won't take long</p>
+      <div class="loader"></div>
+    </div>
+  </div>
+  <div class="modal" id="reset-modal">
+    <div class="notification" id="reset-notification">
+      <h1>Reset all input data</h1>
+      <p>Are you sure?</p>
+      <div>
+        <Button class="btn" id="no-reset-btn">No</Button>
+        <Button class="btn" id="yes-reset-btn">Yes</Button>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <h1 class="page-title">Diamond Price Prediction</h1>
+    <div class="separator">
+      <img src="./assets/images/separator.png" class="separator-img" alt="separator">
+    </div>
+    <div class="input-section">
+      <div class="row 2-items">
+        <div class="input-col-2 p-0">
+          <input type="checkbox" class="dropdown__switch" id="clarity-input1" hidden />
+          <label for="clarity-input1" class="dropdown__options-filter">
+            <ul class="dropdown__filter" role="listbox" tabindex="-1">
+              <li class="value-input dropdown__filter-selected" data-diamondattribute="clarity" aria-selected="true">
+                CLARITY
+              </li>
+              <li>
+                <ul class="dropdown__select">
+                  <li class="dropdown__select-option" role="option">
+                    I1
+                  </li>
+                  <li class="dropdown__select-option" role="option">
+                    SI2
+                  </li>
+                  <li class="dropdown__select-option" role="option">
+                    SI1
+                  </li>
+                  <li class="dropdown__select-option" role="option">
+                    VS2
+                  </li>
+                  <li class="dropdown__select-option" role="option">
+                    VS1
+                  </li>
+                  <li class="dropdown__select-option" role="option">
+                    VVS2
+                  </li>
+                  <li class="dropdown__select-option" role="option">
+                    VVS1
+                  </li>
+                  <li class="dropdown__select-option" role="option">
+                    IF
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </label>
+        </div>
+        <div class="input-col-2 p-0">
+          <input type="checkbox" class="dropdown__switch" id="cut-input" hidden />
+          <label for="cut-input" class="dropdown__options-filter">
+            <ul class="dropdown__filter" role="listbox" tabindex="-1">
+              <li class="value-input dropdown__filter-selected" data-diamondattribute="cut" aria-selected="true">
+                CUT
+              </li>
+              <li>
+                <ul class="dropdown__select">
+                  <li class="dropdown__select-option" role="option">
+                    Fair
+                  </li>
+                  <li class="dropdown__select-option" role="option">
+                    Good
+                  </li>
+                  <li class="dropdown__select-option" role="option">
+                    Very good
+                  </li>
+                  <li class="dropdown__select-option" role="option">
+                    Premium
+                  </li>
+                  <li class="dropdown__select-option" role="option">
+                    Ideal
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </label>
+        </div>
+      </div>
+      <div class="row 2-items">
+        <div class="input-col-2 p-0">
+          <input type="checkbox" class="dropdown__switch" id="color-input" hidden />
+          <label for="color-input" class="dropdown__options-filter">
+            <ul class="dropdown__filter" role="listbox" tabindex="-1">
+              <li class="value-input dropdown__filter-selected" data-diamondattribute="color" aria-selected="true">
+                COLOR
+              </li>
+              <li>
+  
+                <ul class="dropdown__select">
+                  <li class="dropdown__select-option" role="option">
+                    J
+                  </li>
+                  <li class="dropdown__select-option" role="option">
+                    I
+                  </li>
+                  <li class="dropdown__select-option" role="option">
+                    H
+                  </li>
+                  <li class="dropdown__select-option" role="option">
+                    G
+                  </li>
+                  <li class="dropdown__select-option" role="option">
+                    F
+                  </li>
+                  <li class="dropdown__select-option" role="option">
+                    E
+                  </li>
+                  <li class="dropdown__select-option" role="option">
+                    D
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </label>
+        </div>
+        <input id="carat" name="carat" class="input-col-2 value-input" type="text" placeholder="CARAT">
+      </div>
+      <div class="row 2-items">
+        <input id="depth" name="depth" class="input-col-2 value-input" type="text" placeholder="DEPTH">
+        <input id="table" name="table" class="input-col-2 value-input" type="text" placeholder="TABLE">
+      </div>
+      <div class="row 3-items">
+        <input id="x" name="x" class="input-col-3 value-input" type="text" placeholder="X">
+        <input id="y" name="y" class="input-col-3 value-input" type="text" placeholder="Y">
+        <input id="z" name="z" class="input-col-3 value-input" type="text" placeholder="Z">
+      </div>
+    </div>
+    <div class="btn-section">
+      <button class="btn" id="reset-btn">Reset</button>
+      <button class="btn" id="submit-btn">Predict</button>
+    </div>
+    <div class="prediction-container">
+      <div class="loader" id="predict-loading-ico"></div>
+      <h1 id="price"></h1>
+    </div>
+    <div class="diamond">
+      <img src="./assets/images/Main_Diamond.png" class="Diamond-img" alt="Diamond">
+    </div>
+    <span>developed by Dang Le</span>
+    <span>designed by Dinh Tuan Khai</span>
+  </div>
+
+  
+  
+
+  
+
+  
+  <script>
+    
+
+  </script>
+
+
+  <!-- <div class="modal" id="init-modal">
+    <div class="notification">
+      <h1>Initializing Model...</h1>
+      <p>This won't take long</p>
+      <div class="loader"></div>
+    </div>
+  </div>
+
+  <div class="modal" id="reset-modal">
+    <div class="notification" id="reset-notification">
+      <h1>Reset all input data</h1>
+      <p>Are you sure?</p>
+      <div>
+        <Button class="btn" id="no-reset-btn">No</Button>
+        <Button class="btn" id="yes-reset-btn">Yes</Button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1 id="title">Diamond Price Prediction</h1>
+    <div>
+      <label for="carat" class="input-label">Carat</label>
+      <input id="carat" name="carat" class="value-input" type="text">
+    </div>
+    <div>
+      <label for="cut" class="input-label">Cut</label>
+      <select name="cut" class="value-input" id="cut" placeholder="Cut">
+        <option value="0">Fair</option>
+        <option value="1">Good</option>
+        <option value="4">Very good</option>
+        <option value="3">Premium</option>
+        <option value="2">Ideal</option>
+      </select>
+    </div>
+    <div>
+      <label for="color" class="input-label">Color</label>
+      <select name="color" class="value-input" id="color">
+        <option value="6">J</option>
+        <option value="5">I</option>
+        <option value="4">H</option>
+        <option value="3">G</option>
+        <option value="2">F</option>
+        <option value="1">E</option>
+        <option value="0">D</option>
+      </select>
+    </div>
+    <div>
+      <label for="clarity" class="input-label">Clarity</label>
+      <select name="clarity" class="value-input" id="clarity">
+        <option value="0">I1</option>
+        <option value="3">SI2</option>
+        <option value="2">SI1</option>
+        <option value="5">VS2</option>
+        <option value="4">VS1</option>
+        <option value="7">VVS2</option>
+        <option value="6">VVS1</option>
+        <option value="1">IF</option>
+      </select>
+    </div>
+    <div>
+      <label for="depth" class="input-label">Depth</label>
+      <input id="depth" name="depth" class="value-input" type="text">
+    </div>
+    <div>
+      <label for="table" class="input-label">Table</label>
+      <input id="table" name="table" class="value-input" type="text">
+    </div>
+    <div>
+      <label for="x" class="input-label">X</label>
+      <input id="x" name="x" class="value-input" type="text">
+    </div>
+    <div>
+      <label for="y" class="input-label">Y</label>
+      <input id="y" name="y" class="value-input" type="text">
+    </div>
+    <div>
+      <label for="z" class="input-label">Z</label>
+      <input id="z" name="z" class="value-input" type="text">
+    </div>
+    <div class="btn-section">
+      <button class="btn" id="reset-btn">Reset</button>
+      <button class="btn" id="submit-btn">Predict</button>
+    </div>
+    <div class="prediction-container">
+      <div class="loader" id="predict-loading-ico"></div>
+      <h1 id="price"></h1>
+    </div>
+    <h2>CT294_06 - Nhóm 1</h2>
+    <h3>Thành viên</h3>
+
+    <p class="crew-member">B2016955 - Lê Nguyễn Bảo Đăng</p>
+    <p class="crew-member">B2007206 - Trần Việt Quang</p>
+  </div> -->
+
+  
+  <script src="./assets/scripts/api.js"></script>
+  <script src="./assets/scripts/dropDownList.js"></script>
+  <script src="./assets/scripts/handleInput.js"></script>
+</body>
+</html> 
