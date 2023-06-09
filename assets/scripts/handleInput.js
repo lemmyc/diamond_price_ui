@@ -125,7 +125,7 @@ submitBtn.onclick = (e) => {
 
         break;
       }else{
-        console.log(input)
+        // console.log(input)
         let diamondAttrName = input.dataset.diamondattribute
         data = {
           ...data,
